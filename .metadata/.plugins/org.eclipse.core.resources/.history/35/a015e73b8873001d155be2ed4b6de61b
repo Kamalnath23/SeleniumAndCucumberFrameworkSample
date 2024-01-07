@@ -1,0 +1,43 @@
+package apiAutomation;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
+
+public class AirGetAimID {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String token1="";
+		String base = "https://api.support.ciodev.accenture.com/v2/air/getairbyaimprojectid";
+		
+        // Create a request specification
+        RequestSpecification request= RestAssured.given();      
+        // Setting content type to specify format in which request payload will be sent.
+        // ContentType is an ENUM.
+        //request.contentType(ContentType.JSON);
+        request.contentType("application/json");
+        //Adding URI
+        request.baseUri(base);
+      //request.header(jsonString, request, args)
+        request.headers("authorizationtoken" ,token1,
+                      "enterpriseid" , "ptat.admin.1",
+                      "x-api-key" , "HImrEKGXzE1UiFvqteI2H5K7lHHS5PpG7ZlB333j",
+                      "Content-Type", "application/json",
+                      "catalogitem", "98690752db8094d8c3a3ea7b0396191d",
+                      "number", "BCTAPPR0249759");
+
+        // Calling POST method on URI. After hitting we get Response
+        Response response = request.get();
+      
+        // Printing Response as string
+        System.out.println(response.asString());
+       
+        // Get Validatable response to perform validation
+        ValidatableResponse validatableResponse = response.then();
+        // Validate status code as 200
+        validatableResponse.statusCode(200);
+	}
+
+}

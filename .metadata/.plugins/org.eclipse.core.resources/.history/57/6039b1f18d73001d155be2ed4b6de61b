@@ -1,0 +1,38 @@
+package apiAutomation;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+
+public class AirGetAimID2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		RestAssured.baseURI = "https://demoqa.com/BookStore/v1/Books"; 
+		// Get the RequestSpecification of the request to be sent to the server. 
+		RequestSpecification httpRequest = RestAssured.given(); 
+		// specify the method type (GET) and the parameters if any. 
+		//In this case the request does not take any parameters 
+		Response response = httpRequest.request(Method.GET, "");
+		// Print the status and message body of the response received from the server 
+		System.out.println("Status received => " + response.getStatusLine()); 
+		System.out.println("Response=>" + response.prettyPrint());
+	    	
+	}
+	private static String airToken() {
+		// TODO Auto-generated method stub
+	
+			String Url = "https://login.microsoftonline.com/f3211d0e-125b-42c3-86db-322b19a65a22/oauth2/token";
+
+            String body = "client_id=71e9c11c-a036-4759-b66e-9634b9830574&client_secret=_-L~-4_0xK0W9Kk2lrfu1F9mkr~828THzZ&Resource=https://api.support.ciostage.accenture.com/v2/support_ticket/&grant_type=client_credentials";
+
+            Response response = RestAssured.given().contentType("application/x-www-form-urlencoded").body(body)
+
+                        .get(Url);
+
+            String token = "Bearer "+ response.then().extract().path("access_token");
+
+            System.out.println(token);
+            return token;
+	}
+
+}

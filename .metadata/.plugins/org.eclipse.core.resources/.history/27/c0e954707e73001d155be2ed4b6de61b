@@ -1,0 +1,28 @@
+package apiAutomation;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class AirToken {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Url = https://login.microsoftonline.com/f3211d0e-125b-42c3-86db-322b19a65a22/oauth2/token;
+
+            String body = "client_id=71e9c11c-a036-4759-b66e-9634b9830574&client_secret=_-L~-4_0xK0W9Kk2lrfu1F9mkr~828THzZ&Resource=https://api.support.ciostage.accenture.com/v2/support_ticket/&grant_type=client_credentials";
+
+            Response response = RestAssured.given().contentType("application/x-www-form-urlencoded").body(body)
+
+                        .get(Url);
+
+            token = "Bearer "+ response.then().extract().path("access_token");
+
+            System.out.println(token);
+
+           
+
+            return token;
+	}
+
+}

@@ -1,0 +1,19 @@
+package apiAutomation;
+
+public class Demo2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s= "{\"result\":[{\"ApplicationID\":\"71468\",\"ApplicationNm\":\"*.acnms.com\"},{\"ApplicationID\":\"55186\",\"ApplicationNm\":\"*.nt.navitaire.com\"},{\"ApplicationID\":\"9340\",\"ApplicationNm\":\"12332 - Diagnostics Catalog\"},{\"ApplicationID\":\"193811\",\"ApplicationNm\":\"*.otslab.corp\"}]}";
+		
+		StringBuilder sb= new StringBuilder();
+		sb.append(s);
+		sb.replace(s.length()-2, s.length(), "");
+		sb.replace(0, 11, "");
+		System.out.println(sb);
+		
+		
+		
+	}
+
+}

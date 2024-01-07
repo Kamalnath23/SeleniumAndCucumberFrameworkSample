@@ -1,0 +1,20 @@
+package apiAutomation;
+
+public class AirToken {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		RestAssured.baseURI=https://api.support.ciodev.accenture.com/v2/air/getairbyaimprojectid;
+
+	           
+
+            RequestSpecification httpRequest= RestAssured.given();
+
+           
+
+            Response response= httpRequest.request(Method.GET, "");
+
+            System.out.println(response.prettyPrint());
+	}
+
+}
